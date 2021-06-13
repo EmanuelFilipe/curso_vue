@@ -1,9 +1,14 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
 <div id="app">
-    <p>{{titulo}}</p>
+    <!-- v-once permite a exibição daquele valor somente uma vez quando é rendeizado naquele momento
+    se depois ele for alterado, esse ponto q tem o v-once não sera alterado -->
+    <p v-once>{{titulo}}</p>
     <p>{{ saudacao() }}</p>
     <a v-bind:href="link">Google</a>
+    <hr>
+    <!-- v-html interpreta codigo em html -->
+    <p v-html="linkHtml"></p>
 </div>
 
 <script>
@@ -11,10 +16,12 @@
         el: '#app',
         data: {
             titulo: 'usando VueJS',
-            link: 'http://google.com'
+            link: 'http://google.com',
+            linkHtml: '<a href="http://google.com.br">Google</a>'
         },
         methods: {
             saudacao(){
+                this.titulo = 'bom dia!'
                 return this.titulo
             }
         }
