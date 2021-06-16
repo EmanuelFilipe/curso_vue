@@ -1,0 +1,41 @@
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    {{nome}} {{sobrenome}} {{1+1}}
+</div>
+
+<script>
+    function MeuVue(params) {
+        this.$el = document.querySelector(params.el)
+        this.$data = params.data
+
+        for (let atr in this.$data) {
+            Object.defineProperty(this, atr, {
+                get: () => {
+                    return this.$data[atr]
+                },
+                set: value => {
+                    this.$data[atr] = value
+                }
+            })            
+        }
+
+        
+    }
+
+    const vm = new MeuVue({
+        el: '#app',
+        data: {
+            nome: 'Filipe',
+            sobrenome: 'Silva'
+        }
+    })
+
+    console.log(vm.nome)
+
+    vm.nome = 'Gustavo'
+    console.log(vm.nome)
+</script>

@@ -1,0 +1,44 @@
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <h1>{{titulo}}</h1>
+    <button @click="titulo += '#'">Altera Titulo</button>
+    <button @click="$destroy()">Destroy</button>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            titulo: 'Ciclo de Vida'
+        },
+        beforeCreate() {
+            console.log('antes de criar')
+        },
+        created() {
+            console.log('criado')
+        },
+        beforeMount() {
+            console.log('antes de montar (dom)')
+        },
+        mounted() {
+            console.log('dom montada')
+        },
+        beforeUpdate() {
+            console.log('antes de atualizar')
+        },
+        updated() {
+            console.log('atualizado')
+        },
+        beforeDestroy() {
+            console.log('antes de destruir')
+        },
+        destroyed() {
+            console.log('destruido')
+        },
+    
+    })
+</script>
